@@ -4,7 +4,7 @@ namespace JogoDaForca.ConsoleApp
 {
     internal class Program
     {
-        // Versão 3: Verificação do input
+        // Versão 4: Exibir boneco da forca
         static void Main(string[] args)
         {
             while (true)
@@ -28,14 +28,33 @@ namespace JogoDaForca.ConsoleApp
                 {
                     string dicaDaPalavra = String.Join(" ", letrasEncontradas);
 
+                    string cabeca = quantidadeDeErros >= 1 ? "O" : "";
+                    string bracoEsquerdo = quantidadeDeErros >= 2 ? "/" : "";
+                    string tronco = quantidadeDeErros >= 3 ? "|" : "";
+                    string bracoDireito = quantidadeDeErros >= 4 ? @"\" : "";
+                    string pernas = quantidadeDeErros >= 5 ? @"/ \" : "";
+
                     Console.Clear();
-                    Console.WriteLine("---------------------------------------------");
-                    Console.WriteLine("Jogo da Forca");
-                    Console.WriteLine("---------------------------------------------");
-                    Console.WriteLine("Palavra Secreta: " + dicaDaPalavra);
-                    Console.WriteLine("---------------------------------------------");
-                    Console.WriteLine("Quantidade de Erros: " + quantidadeDeErros);
-                    Console.WriteLine("---------------------------------------------");
+                    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    Console.WriteLine("                                                     Jogo da Forca                                                      ");
+                    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    Console.WriteLine("                                      ----------------------");
+                    Console.WriteLine("                                      |                    |");
+                    Console.WriteLine("                                      |                    {0}", cabeca);
+                    Console.WriteLine("                                      |                   {0}{1}{2}", bracoEsquerdo, tronco, bracoDireito);
+                    Console.WriteLine("                                      |                   {0}", pernas);
+                    Console.WriteLine("                                      |");
+                    Console.WriteLine("                                      |");
+                    Console.WriteLine("                                      |");
+                    Console.WriteLine("                                      |");
+                    Console.WriteLine("                                      |");
+                    Console.WriteLine("                                      |");
+                    Console.WriteLine("                              __v__v__|__v__v__");
+                    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
+                    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
 
                     Console.Write("Digite Uma Letra: ");
                     char chute = Console.ReadLine()[0]; // char = Obtém Apenas Um Caractere Que o Usuário Digita
@@ -65,16 +84,16 @@ namespace JogoDaForca.ConsoleApp
 
                     if (jogadorAcertou)
                     {
-                        Console.WriteLine("---------------------------------------------");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                         Console.WriteLine("Você Acertou a Palavra Secreta! Era: " + palavraSecreta);
-                        Console.WriteLine("---------------------------------------------");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
 
                     }  
                     else if (jogadorEnforcou)
                     {
-                        Console.WriteLine("---------------------------------------------");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                         Console.WriteLine("Que Azar, Tente Novamente! A Palavra Era: " + palavraSecreta);
-                        Console.WriteLine("---------------------------------------------");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
 
                     }
 
