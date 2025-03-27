@@ -1,16 +1,53 @@
 ﻿using System;
+using System.ComponentModel.Design;
 
 namespace JogoDaForca.ConsoleApp
 {
     internal class Program
     {
-        // Versão 4: Exibir boneco da forca
+        // Versão 5: Escolher uma palavra aleatória
         static void Main(string[] args)
         {
+            string[] frutas = 
+            {
+                "ABACAXI",
+                "ACEROLA",
+                "ACAI",
+                "ARACA",
+                "ABACATE",
+                "BACABA",
+                "BACURI",
+                "BANANA",
+                "CAJA",
+                "CAJU",
+                "CARAMBOLA",
+                "CUPUACU",
+                "GRAVIOLA",
+                "GOIABA",
+                "JABUTICABA",
+                "JENIPAPO",
+                "MACA",
+                "MANGABA",
+                "MANGA",
+                "MARACUJA",
+                "MURICI",
+                "PEQUI",
+                "PITANGA",
+                "PITAYA",
+                "SAPOTI",
+                "TANGERINA",
+                "UMBU",
+                "UVA",
+                "UVAIA"
+            };
             while (true)
             {
+                Random geradorDeNumeros = new Random();
 
-                string palavraSecreta = "MELANCIA";
+                int indicePalavraEscolhida = geradorDeNumeros.Next(frutas.Length);
+
+                string palavraSecreta = frutas[indicePalavraEscolhida];
+                ;
 
                 char[] letrasEncontradas = new char[palavraSecreta.Length];
 
@@ -28,33 +65,137 @@ namespace JogoDaForca.ConsoleApp
                 {
                     string dicaDaPalavra = String.Join(" ", letrasEncontradas);
 
-                    string cabeca = quantidadeDeErros >= 1 ? "O" : "";
-                    string bracoEsquerdo = quantidadeDeErros >= 2 ? "/" : "";
-                    string tronco = quantidadeDeErros >= 3 ? "|" : "";
-                    string bracoDireito = quantidadeDeErros >= 4 ? @"\" : "";
-                    string pernas = quantidadeDeErros >= 5 ? @"/ \" : "";
-
                     Console.Clear();
                     Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                     Console.WriteLine("                                                     Jogo da Forca                                                      ");
                     Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                    Console.WriteLine("                                      ----------------------");
-                    Console.WriteLine("                                      |                    |");
-                    Console.WriteLine("                                      |                    {0}", cabeca);
-                    Console.WriteLine("                                      |                   {0}{1}{2}", bracoEsquerdo, tronco, bracoDireito);
-                    Console.WriteLine("                                      |                   {0}", pernas);
-                    Console.WriteLine("                                      |");
-                    Console.WriteLine("                                      |");
-                    Console.WriteLine("                                      |");
-                    Console.WriteLine("                                      |");
-                    Console.WriteLine("                                      |");
-                    Console.WriteLine("                                      |");
-                    Console.WriteLine("                              __v__v__|__v__v__");
-                    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                    Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
-                    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                    Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
-                    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+
+                    if (quantidadeDeErros == 0)
+                    {
+                        Console.WriteLine("                                      ----------------------");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                              __v__v__|__v__v__");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    }
+
+                    else if (quantidadeDeErros == 1)
+                    {
+                        Console.WriteLine("                                      ----------------------");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |                    O");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                              __v__v__|__v__v__");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    }
+
+                    else if (quantidadeDeErros == 2)
+                    {
+                        Console.WriteLine("                                      ----------------------");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |                    O");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                              __v__v__|__v__v__");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    }
+
+                    else if (quantidadeDeErros == 3)
+                    {
+                        Console.WriteLine("                                      ----------------------");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |                    O");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                              __v__v__|__v__v__");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    }
+
+                    else if (quantidadeDeErros == 4)
+                    {
+                        Console.WriteLine("                                      ----------------------");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |                    O");
+                        Console.WriteLine("                                      |                   /|\\");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                              __v__v__|__v__v__");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    }
+
+                    else if (quantidadeDeErros == 5)
+                    {
+                        Console.WriteLine("                                      ----------------------");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |                    O");
+                        Console.WriteLine("                                      |                   /|\\");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |                   / \\");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                              __v__v__|__v__v__");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                    }
+
 
                     Console.Write("Digite Uma Letra: ");
                     char chute = Console.ReadLine()[0]; // char = Obtém Apenas Um Caractere Que o Usuário Digita
@@ -84,24 +225,63 @@ namespace JogoDaForca.ConsoleApp
 
                     if (jogadorAcertou)
                     {
+                        Console.Clear();
                         Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                        Console.WriteLine("Você Acertou a Palavra Secreta! Era: " + palavraSecreta);
+                        Console.WriteLine("                                                     Jogo da Forca                                                      ");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                      ----------------------");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |                    J");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |                      -Obrigado-");
+                        Console.WriteLine("                                      |                     /");
+                        Console.WriteLine("                                      |                   \\O/");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |                   / \\");
+                        Console.WriteLine("                              __v__v__|__v__v__v__v__v__v__v__v__v__v");
+
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                             PARABÉNS, Você Acertou a Palavra Secreta! Era: " + palavraSecreta);
                         Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
 
                     }  
                     else if (jogadorEnforcou)
                     {
+                        Console.Clear();
                         Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                        Console.WriteLine("Que Azar, Tente Novamente! A Palavra Era: " + palavraSecreta);
+                        Console.WriteLine("                                                     Jogo da Forca                                                      ");
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                                      ----------------------");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |                    O");
+                        Console.WriteLine("                                      |                   /|\\");
+                        Console.WriteLine("                                      |                    |");
+                        Console.WriteLine("                                      |                   / \\");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                                      |");
+                        Console.WriteLine("                              __v__v__|__v__v__");
+
+                        Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                        Console.WriteLine("                              QUE AZAR, Tente Novamente! A Palavra Era: " + palavraSecreta);
                         Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
 
                     }
 
                 } while (jogadorAcertou == false && jogadorEnforcou == false); // || = OU
 
-                Console.ReadLine();
+                Console.Write("Deseja continuar? (S/N): ");
 
-                
+                string opcaoContinuar = Console.ReadLine().ToUpper();
+
+                if (opcaoContinuar != "S")
+                            break;
+
+
             }
         }
 
