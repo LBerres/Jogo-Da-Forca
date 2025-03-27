@@ -255,8 +255,8 @@ namespace JogoDaForca.ConsoleApp
                         Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                         Console.WriteLine("                                      ----------------------");
                         Console.WriteLine("                                      |                    |");
-                        Console.WriteLine("                                      |                    |");
-                        Console.WriteLine("                                      |                    O");
+                        Console.WriteLine("                                      |                   _|_");
+                        Console.WriteLine("                                      |                  (x_x)");
                         Console.WriteLine("                                      |                   /|\\");
                         Console.WriteLine("                                      |                    |");
                         Console.WriteLine("                                      |                   / \\");
