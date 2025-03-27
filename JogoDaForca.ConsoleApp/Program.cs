@@ -15,8 +15,8 @@ namespace JogoDaForca.ConsoleApp
                 "ACAI",
                 "ARACA",
                 "ABACATE",
-                "BACABA",
-                "BACURI",
+                "LIMAO",
+                "LARANJA",
                 "BANANA",
                 "CAJA",
                 "CAJU",
@@ -30,15 +30,15 @@ namespace JogoDaForca.ConsoleApp
                 "MANGABA",
                 "MANGA",
                 "MARACUJA",
-                "MURICI",
+                "BERGAMOTA",
                 "PEQUI",
                 "PITANGA",
                 "PITAYA",
                 "SAPOTI",
                 "TANGERINA",
-                "UMBU",
+                "MELANCIA",
                 "UVA",
-                "UVAIA"
+                "MELAO"
             };
             while (true)
             {
@@ -248,14 +248,13 @@ namespace JogoDaForca.ConsoleApp
                         Console.WriteLine("                                      |                    |");
                         Console.WriteLine("                                      |                    J");
                         Console.WriteLine("                                      |");
-                        Console.WriteLine("                                      |");
                         Console.WriteLine("                                      |                      -Obrigado-");
                         Console.WriteLine("                                      |                     /");
                         Console.WriteLine("                                      |                   \\O/");
                         Console.WriteLine("                                      |                    |");
                         Console.WriteLine("                                      |                    |");
                         Console.WriteLine("                                      |                   / \\");
-                        Console.WriteLine("                              ____________________________________________");
+                        Console.WriteLine("                              ___________________________________________");
 
                         Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                         Console.WriteLine("                             PARABÉNS, Você Acertou a Palavra Secreta! Era: " + palavraSecreta);
@@ -281,7 +280,7 @@ namespace JogoDaForca.ConsoleApp
                         Console.WriteLine("                                      |                    |");
                         Console.WriteLine("                                      |                   / \\");
                         Console.WriteLine("                                      |");
-                        Console.WriteLine("                             ____________________________________________");
+                        Console.WriteLine("                              ___________________________________________");
 
                         Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                         Console.WriteLine("                              QUE AZAR, Tente Novamente! A Palavra Era: " + palavraSecreta);
