@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.Security.Cryptography.X509Certificates;
 
 namespace JogoDaForca.ConsoleApp
 {
     internal class Program
     {
-        // Versão 5: Escolher uma palavra aleatória
+        // Desafio: Armazenar e Exibir letras já digitadas
         static void Main(string[] args)
         {
           
@@ -72,14 +73,23 @@ namespace JogoDaForca.ConsoleApp
                         int indicePalavraEscolhida = geradorDeNumeros.Next(frutas.Length);
 
                         string palavraSecreta = frutas[indicePalavraEscolhida];
-                        ;
 
                         char[] letrasEncontradas = new char[palavraSecreta.Length];
+
+                        char[] letrasErradas = new char[6];
+
+                        int contadorLetrasErradas = 0;
 
                         for (int caractere = 0; caractere < letrasEncontradas.Length; caractere++)
                         {
                             // Acessar o Array no Índice 0
                             letrasEncontradas[caractere] = '_';
+                        }
+
+                        for (int caractere = 0; caractere < letrasErradas.Length; caractere++)
+                        {
+                            //acessar o array no indice 0 ou encontrado // quando se quer passar valor para a caractere// [caractere] = '_';//
+                            letrasErradas[caractere] = '_';
                         }
 
                         int quantidadeDeErros = 0;
@@ -89,6 +99,7 @@ namespace JogoDaForca.ConsoleApp
                         do
                         {
                             string dicaDaPalavra = String.Join(" ", letrasEncontradas);
+                            string dicaLetrasErradas = String.Join(" ", letrasErradas);
 
                             Console.Clear();
                             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
@@ -114,7 +125,9 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
                             else if (quantidadeDeErros == 1)
@@ -136,7 +149,9 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
                             else if (quantidadeDeErros == 2)
@@ -158,7 +173,9 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
                             else if (quantidadeDeErros == 3)
@@ -180,7 +197,9 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
                             else if (quantidadeDeErros == 4)
@@ -202,7 +221,9 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
                             else if (quantidadeDeErros == 5)
@@ -224,10 +245,11 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
-
 
                             Console.Write("Digite Uma Letra: ");
                             char chute = Console.ReadLine()[0]; // char = Obtém Apenas Um Caractere Que o Usuário Digita
@@ -243,13 +265,19 @@ namespace JogoDaForca.ConsoleApp
                                     letrasEncontradas[contador] = letraAtual;
                                     letraFoiEncontrada = true;
                                 }
-
                             }
 
                             if (letraFoiEncontrada == false)
+                            {
                                 quantidadeDeErros++;
+                                letrasErradas[contadorLetrasErradas] = chute;
+                                contadorLetrasErradas++;
+                            }
+                        
+                     Console.ReadLine();
 
-                            dicaDaPalavra = String.Join("", letrasEncontradas);
+                        dicaDaPalavra = String.Join("", letrasEncontradas);
+                        dicaLetrasErradas = String.Join("", letrasErradas);
 
                             jogadorAcertou = dicaDaPalavra == palavraSecreta;
                             // Jogador Poderá Cometer 5 Erros antes de Perder
@@ -305,7 +333,6 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                              QUE AZAR, Tente Novamente! A Palavra Era: " + palavraSecreta);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-
                             }
 
                         } while (jogadorAcertou == false && jogadorEnforcou == false); // || = OU
@@ -317,7 +344,6 @@ namespace JogoDaForca.ConsoleApp
                         if (opcaoContinuar != "S")
                             break;
                     }
-                    
 
                 }
 
@@ -363,14 +389,23 @@ namespace JogoDaForca.ConsoleApp
                         int indicePalavraEscolhida = geradorDeNumeros.Next(paises.Length);
 
                         string palavraSecreta = paises[indicePalavraEscolhida];
-                        ;
 
                         char[] letrasEncontradas = new char[palavraSecreta.Length];
+
+                        char[] letrasErradas = new char[6];
+
+                        int contadorLetrasErradas = 0;
 
                         for (int caractere = 0; caractere < letrasEncontradas.Length; caractere++)
                         {
                             // Acessar o Array no Índice 0
                             letrasEncontradas[caractere] = '_';
+                        }
+
+                        for (int caractere = 0; caractere < letrasErradas.Length; caractere++)
+                        {
+                            //acessar o array no indice 0 ou encontrado // quando se quer passar valor para a caractere// [caractere] = '_';//
+                            letrasErradas[caractere] = '_';
                         }
 
                         int quantidadeDeErros = 0;
@@ -380,6 +415,7 @@ namespace JogoDaForca.ConsoleApp
                         do
                         {
                             string dicaDaPalavra = String.Join(" ", letrasEncontradas);
+                            string dicaLetrasErradas = String.Join(" ", letrasErradas);
 
                             Console.Clear();
                             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
@@ -405,9 +441,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 1)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -427,9 +466,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 2)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -449,9 +491,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 3)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -471,9 +516,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 4)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -493,9 +541,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 5)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -515,10 +566,11 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
-
 
                             Console.Write("Digite Uma Letra: ");
                             char chute = Console.ReadLine()[0]; // char = Obtém Apenas Um Caractere Que o Usuário Digita
@@ -534,13 +586,19 @@ namespace JogoDaForca.ConsoleApp
                                     letrasEncontradas[contador] = letraAtual;
                                     letraFoiEncontrada = true;
                                 }
-
                             }
 
                             if (letraFoiEncontrada == false)
+                            {
                                 quantidadeDeErros++;
+                                letrasErradas[contadorLetrasErradas] = chute;
+                                contadorLetrasErradas++;
+                            }
+
+                            Console.ReadLine();
 
                             dicaDaPalavra = String.Join("", letrasEncontradas);
+                            dicaLetrasErradas = String.Join("", letrasErradas);
 
                             jogadorAcertou = dicaDaPalavra == palavraSecreta;
                             // Jogador Poderá Cometer 5 Erros antes de Perder
@@ -607,9 +665,8 @@ namespace JogoDaForca.ConsoleApp
 
                         if (opcaoContinuar != "S")
                             break;
-
-
                     }
+
                 }
 
                 else if (opcao == "3")
@@ -654,14 +711,23 @@ namespace JogoDaForca.ConsoleApp
                         int indicePalavraEscolhida = geradorDeNumeros.Next(cores.Length);
 
                         string palavraSecreta = cores[indicePalavraEscolhida];
-                        ;
 
                         char[] letrasEncontradas = new char[palavraSecreta.Length];
+
+                        char[] letrasErradas = new char[6];
+
+                        int contadorLetrasErradas = 0;
 
                         for (int caractere = 0; caractere < letrasEncontradas.Length; caractere++)
                         {
                             // Acessar o Array no Índice 0
                             letrasEncontradas[caractere] = '_';
+                        }
+
+                        for (int caractere = 0; caractere < letrasErradas.Length; caractere++)
+                        {
+                            //acessar o array no indice 0 ou encontrado // quando se quer passar valor para a caractere// [caractere] = '_';//
+                            letrasErradas[caractere] = '_';
                         }
 
                         int quantidadeDeErros = 0;
@@ -671,6 +737,7 @@ namespace JogoDaForca.ConsoleApp
                         do
                         {
                             string dicaDaPalavra = String.Join(" ", letrasEncontradas);
+                            string dicaLetrasErradas = String.Join(" ", letrasErradas);
 
                             Console.Clear();
                             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
@@ -696,9 +763,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 1)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -718,9 +788,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 2)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -740,9 +813,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 3)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -762,9 +838,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 4)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -784,9 +863,12 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
+
                             else if (quantidadeDeErros == 5)
                             {
                                 Console.WriteLine("                                      ----------------------");
@@ -806,10 +888,11 @@ namespace JogoDaForca.ConsoleApp
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                                 Console.WriteLine("                                              Palavra Secreta: " + dicaDaPalavra);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-                                Console.WriteLine("                                                 Quantidade de Erros: " + quantidadeDeErros);
+                                Console.WriteLine("                                              Letras Erradas: " + dicaLetrasErradas);
+                                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+                                Console.WriteLine("                                               Quantidade de Erros: " + quantidadeDeErros);
                                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
                             }
-
 
                             Console.Write("Digite Uma Letra: ");
                             char chute = Console.ReadLine()[0]; // char = Obtém Apenas Um Caractere Que o Usuário Digita
@@ -825,13 +908,19 @@ namespace JogoDaForca.ConsoleApp
                                     letrasEncontradas[contador] = letraAtual;
                                     letraFoiEncontrada = true;
                                 }
-
                             }
 
                             if (letraFoiEncontrada == false)
+                            {
                                 quantidadeDeErros++;
+                                letrasErradas[contadorLetrasErradas] = chute;
+                                contadorLetrasErradas++;
+                            }
+
+                            Console.ReadLine();
 
                             dicaDaPalavra = String.Join("", letrasEncontradas);
+                            dicaLetrasErradas = String.Join("", letrasErradas);
 
                             jogadorAcertou = dicaDaPalavra == palavraSecreta;
                             // Jogador Poderá Cometer 5 Erros antes de Perder
@@ -898,9 +987,8 @@ namespace JogoDaForca.ConsoleApp
 
                         if (opcaoContinuar != "S")
                             break;
-
-
                     }
+
                 }
 
                 Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
